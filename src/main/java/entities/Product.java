@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Product implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
 	private long id;
 	private String designation;
 	private double price;
@@ -15,6 +16,14 @@ public class Product implements Serializable{
 		this.designation=designation;
 		this.price=price;
 		this.quantity=quantity;
+	}
+	
+	public long getId() {
+		return id;
+	}
+	
+	public void setId(long id) {
+		this.id=id;
 	}
 
 	public String getDesignation() {

@@ -9,7 +9,7 @@ public class SingletonConnection {
 	
 	static {
 		try {
-			Class.forName("com.sql.jdbc.driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Product_DB","admin","admin123");
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
