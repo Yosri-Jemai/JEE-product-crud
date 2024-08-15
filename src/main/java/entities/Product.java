@@ -49,7 +49,12 @@ public class Product implements Serializable{
 	public void setQuantity(long quantity) {
 		this.quantity = quantity;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", designation=" + designation + ", price=" + price + ", quantity=" + quantity
+				+ "]";
+	}
 	
 
 }
