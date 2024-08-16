@@ -1,4 +1,4 @@
-<%@page import="model.ProductModel"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,54 +12,33 @@
 	
 	<div class="container d-flex justify-content-center align-items-center">
 		<div class="card border-primary mt-5 w-75">
-		<div class="card-header bg-primary text-white text-center h3">Products</div>
+		<div class="card-header bg-primary text-white text-center fs-3  ">Product Search</div>
 			<div class="card-body text-dark">
-		
-			<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col" class="px-4">ID</th>
-      <th scope="col" class="ps-2">DESIGNATION</th>
-      <th scope="col" class="px-4">PRICE</th>
-      <th scope="col" class="pe-4">QUANTITY</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row" class="px-4">1</th>
-      <td class="ps-2">HP</td>
-      <td class="px-4">1200</td>
-      <td class="pe-4">45</td>
-    </tr>
-    <tr>
-      <th scope="row" class="px-4">2</th>
-      <td class="ps-2">Lenovo</td>
-      <td class="px-4">3050</td>
-      <td class="pe-4">27</td>
-    </tr>
-    <tr>
-      <th scope="row" class="px-4">3</th>
-      <td class="ps-2">Acer</td>
-      <td class="px-4">8500</td>
-      <td class="pe-4">10</td>
-    </tr>
-    <tr>
-      <th scope="row" class="px-4">4</th>
-      <td class="ps-2">Dell</td>
-      <td class="px-4">780</td>
-      <td class="pe-4">3</td>
-    </tr>
-    <tr>
-      <th scope="row" class="px-4">5</th>
-      <td class="ps-2">MSI</td>
-      <td class="px-4">2900</td>
-      <td class="pe-4">16</td>
-    </tr>
-  </tbody>
-</table>
-
-
-		
+				<form action="search.do" method="get">			
+					<div class="input-group mb-3">
+	  					<input type="text" class="form-control " placeholder="Keyword" name="keyword">
+	  					<button class="btn btn-outline-secondary w-25 " type="submit" >search</button>
+					</div>
+					<table class="table">
+					  <thead class="thead-dark">
+					    <tr>
+					      <th scope="col" class="px-4">ID</th>
+					      <th scope="col" class="ps-2">DESIGNATION</th>
+					      <th scope="col" class="px-4">PRICE</th>
+					      <th scope="col" class="pe-4">QUANTITY</th>
+					    </tr>
+					  </thead>
+					  <tbody>					    
+					  	<c:forEach items="${model.p}" var="p">
+					  		<tr>
+						  		<th scope="row" class="px-4">${p.id}</th>
+						  		<td class="ps-2">${p.designation}</td>
+						  		<td class="px-4">${p.price}</td>
+						  		<td class="pe-4">${p.quantity}</td>
+						  	</tr>
+					  	</c:forEach>
+					  </tbody>
+				</form>
 			</div>
 		</div>
 	</div>
