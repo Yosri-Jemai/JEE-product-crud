@@ -31,11 +31,11 @@ public class ControllerServlet extends HttpServlet{
 		}
 		else if (path.equals("/search.do")) {
 			String keyword = req.getParameter("keyword");
-			ProductModel model = new ProductModel();
-			model.setKeyword(keyword);
+			ProductModel pm = new ProductModel();
+			pm.setKeyword(keyword);
 			List<Product> prods = pr.getProductsByKeyword(keyword);
-			model.setP(prods);
-			req.setAttribute("model", model);
+			pm.setP(prods);
+			req.setAttribute("model", pm);
 			req.getRequestDispatcher(pathViews+"/products.jsp").forward(req, resp);
 		} else {
 			resp.sendError(HttpServletResponse.SC_NOT_FOUND,"The requested resource was not found.");
