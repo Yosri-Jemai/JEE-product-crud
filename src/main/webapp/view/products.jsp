@@ -1,15 +1,15 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="/lib.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+
 <link rel="stylesheet" type="text/css" href="css/products.css">
-<title>Products</title>
+<title>Products - Home</title>
 </head>
 <body>
-	
+	<%@include file="header.jsp" %>
 	<div class="container d-flex justify-content-center align-items-center">
 		<div class="card border-primary mt-5 w-75">
 		<div class="card-header bg-primary text-white text-center fs-3  ">Products</div>

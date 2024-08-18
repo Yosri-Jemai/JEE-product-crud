@@ -26,6 +26,7 @@ public class ControllerServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String path = req.getServletPath();	//HTTP root path
+		req.setAttribute("currentPath", path);
 		if (path.equals("/index.do")) {
 			req.getRequestDispatcher(pathViews+"/products.jsp").forward(req, resp);
 		}
@@ -37,6 +38,10 @@ public class ControllerServlet extends HttpServlet{
 			pm.setP(prods);
 			req.setAttribute("model", pm);
 			req.getRequestDispatcher(pathViews+"/products.jsp").forward(req, resp);
+		}else if(path.equals("/addProduct.do")){
+			
+			req.getRequestDispatcher(pathViews+"/addProduct.jsp").forward(req, resp);
+			
 		} else {
 			resp.sendError(HttpServletResponse.SC_NOT_FOUND,"The requested resource was not found.");
 		}
