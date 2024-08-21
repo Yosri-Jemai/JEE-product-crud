@@ -1,0 +1,7 @@
+entities/Product.class
+dao/SingletonConnection.class
+dao/ProductDaoImpl.class
+dao/IProductDao.class
+dao/TestDao.class
+model/ProductModel.class
+controller/ControllerServlet.class

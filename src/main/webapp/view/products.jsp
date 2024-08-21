@@ -4,7 +4,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link rel="stylesheet" type="text/css" href="css/products.css">
 <title>Products - Home</title>
 </head>
@@ -12,7 +11,7 @@
 	<%@include file="header.jsp" %>
 	<div class="container d-flex justify-content-center align-items-center">
 		<div class="card border-primary mt-5 w-75">
-		<div class="card-header bg-primary text-white text-center fs-3  ">Products</div>
+		<div class="card-header bg-primary text-white text-center fs-3  ">Product List</div>
 			<div class="card-body text-dark">
 				<form action="search.do" method="get">			
 					<div class="input-group mb-3">
