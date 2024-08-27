@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class ProductDaoImpl implements IProductDao{
 			if (rs.next()) {
 				p.setId(rs.getLong("MAX_ID"));
 			}
-			
+			ps2.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -71,8 +72,16 @@ public class ProductDaoImpl implements IProductDao{
 
 	@Override
 	public void deleteProduct(Long id) {
-		// TODO Auto-generated method stub
-		
+		Connection connection = SingletonConnection.getConnection();
+		try {
+			PreparedStatement ps = connection.prepareStatement("DELETE FROM products WHERE id = ?");
+			ps.setLong(1, id);
+			ps.executeUpdate();
+			ps.close();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -27,7 +27,7 @@ public class ControllerServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String path = req.getServletPath();	
 		req.setAttribute("currentPath", path); //needed for view/header.jsp
-		if (path.equals("/search.do")) {
+		if (path.equals("/home.do")) {
 			String keyword = req.getParameter("keyword");
 			ProductModel pm = new ProductModel();
 			//pm.setKeyword(keyword);
@@ -36,7 +36,13 @@ public class ControllerServlet extends HttpServlet{
 			req.setAttribute("model", pm);
 			req.getRequestDispatcher(pathViews+"/products.jsp").forward(req, resp);
 		}else if(path.equals("/save.do")){
-			req.getRequestDispatcher(pathViews+"/addProduct.jsp").forward(req, resp); //takes us to path "confirmation.do"
+			req.getRequestDispatcher(pathViews+"/addProduct.jsp").forward(req, resp); 
+		} else if(path.equals("/delete.do")){
+			long id = Long.parseLong(req.getParameter("id"));
+			pr.deleteProduct(id);
+			resp.sendRedirect("home.do?keyword=");
+		} else if(path.equals("/edit.do")){
+			//todo
 		} else {
 			resp.sendError(HttpServletResponse.SC_NOT_FOUND,"The requested resource was not found.");
 		}
@@ -52,7 +58,7 @@ public class ControllerServlet extends HttpServlet{
 		req.setAttribute("newProduct", p);
 		req.getRequestDispatcher(pathViews + "/confirm.jsp").forward(req, resp);
 		
-		// To fix => Post/Redirect/Get pattern
+		// To fix => Post/Redirect/Get pattern (data resent on refresh)
 	}
 	
 	

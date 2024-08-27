@@ -5,7 +5,7 @@
     <div class="collapse navbar-collapse " id="navbarNav">
       <ul class="navbar-nav">
          <li class="nav-item">
-          <a class="nav-link <%= "/search.do".equals(request.getAttribute("currentPath")) ? "fw-bold" : "" %>" href="search.do">Home</a>
+          <a class="nav-link <%= "/home.do".equals(request.getAttribute("currentPath")) ? "fw-bold" : "" %>" href="home.do">Home</a>
         </li>
         <li class="nav-item ms-3">
           <a class="nav-link <%= "/save.do".equals(request.getAttribute("currentPath")) ? "fw-bold" : "" %>" href="save.do">Add Product</a>

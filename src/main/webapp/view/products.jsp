@@ -10,10 +10,10 @@
 <body>
 	<%@include file="header.jsp" %>
 	<div class="container d-flex justify-content-center align-items-center">
-		<div class="card border-primary mt-5 w-75">
+		<div class="card border-primary mt-5 mb-5 w-75">
 		<div class="card-header bg-primary text-white text-center fs-3  ">Product List</div>
 			<div class="card-body text-dark">
-				<form action="search.do" method="get">			
+				<form action="home.do" method="get">			
 					<div class="input-group mb-3">
 	  					<input type="text" class="form-control " placeholder="Keyword" name="keyword">
 	  					<button class="btn btn-outline-secondary w-25 " type="submit" >search</button>
@@ -43,6 +43,8 @@
 							  		<td class="ps-2">${p.designation}</td>
 							  		<td class="px-4">${p.price}</td>
 							  		<td class="pe-4">${p.quantity}</td>
+							  		<td><a href="edit.do?id=${p.id}">Edit</a></td>
+							  		<td><a onclick="return confirm('Are you sure?')" href="delete.do?id=${p.id}">Delete</a></td>
 							  	</tr>
 						  	</c:forEach>
 						</tbody>
