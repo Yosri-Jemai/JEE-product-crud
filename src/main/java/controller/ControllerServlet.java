@@ -68,8 +68,6 @@ public class ControllerServlet extends HttpServlet{
 		req.setAttribute("newProduct", p);
 		req.getRequestDispatcher(pathViews + "/confirm.jsp").forward(req, resp);
 		// To fix => Post/Redirect/Get pattern (data resent on refresh)
-		} else {
-			resp.sendError(HttpServletResponse.SC_NOT_FOUND,"The requested resource was not found.");
 		}
 	}
 	
