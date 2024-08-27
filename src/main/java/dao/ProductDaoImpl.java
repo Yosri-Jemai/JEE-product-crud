@@ -31,8 +31,7 @@ public class ProductDaoImpl implements IProductDao{
 			ps2.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		
+		}	
 		return p;
 	}
 
@@ -60,14 +59,41 @@ public class ProductDaoImpl implements IProductDao{
 
 	@Override
 	public Product getProduct(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Connection connection = SingletonConnection.getConnection();
+		Product p = null;
+		try {
+			PreparedStatement ps = connection.prepareStatement("SELECT * FROM products WHERE id = ?");
+			ps.setLong(1, id);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				p = new Product();
+				p.setId(rs.getLong("id"));
+				p.setDesignation(rs.getString("designation"));
+				p.setPrice(rs.getDouble("price"));
+				p.setQuantity(rs.getLong("quantity"));		
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return p;
 	}
 
 	@Override
 	public Product updateProduct(Product p) {
-		// TODO Auto-generated method stub
-		return null;
+	    Connection connection = SingletonConnection.getConnection();
+	    try {
+	        PreparedStatement ps = connection.prepareStatement(
+	            "UPDATE products SET designation = ?, price = ?, quantity = ? WHERE id = ?");
+	        ps.setString(1, p.getDesignation());
+	        ps.setDouble(2, p.getPrice());
+	        ps.setLong(3, p.getQuantity());
+	        ps.setLong(4, p.getId());
+	        ps.executeUpdate();
+	        ps.close();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return p;
 	}
 
 	@Override
@@ -77,9 +103,8 @@ public class ProductDaoImpl implements IProductDao{
 			PreparedStatement ps = connection.prepareStatement("DELETE FROM products WHERE id = ?");
 			ps.setLong(1, id);
 			ps.executeUpdate();
-			ps.close();
-			
-		}catch (Exception e) {
+			ps.close();		
+		}catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
