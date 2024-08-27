@@ -12,7 +12,7 @@
 	
 	<div class="container d-flex justify-content-center align-items-center">
 		<div class="card border-primary mt-5 w-75">
-		<div class="card-header bg-primary text-white text-center fs-3  ">Add Product</div>
+		<div class="card-header bg-primary text-white text-center fs-3  ">Update Product</div>
 			<div class="card-body text-dark">
 				
 				<form action="edit.do" method="post">
